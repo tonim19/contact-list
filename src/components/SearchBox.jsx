@@ -1,22 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Search from "../assets/svg/Search.svg";
 import { ContactsContext } from "../context/ContactsContext";
 
 const SearchBox = () => {
-  const { contacts } = useContext(ContactsContext);
-
-  const [text, setText] = useState("");
+  const { text, setText } = useContext(ContactsContext);
 
   const handleChange = (e) => {
     setText(e.target.value);
-
-    const filterContacts = (text) => {
-      const filtered = contacts.filter((contact) => {
-        return contact.fullName.toLowerCase().includes(text.toLowerCase());
-      });
-    };
-
-    filterContacts(text);
   };
 
   return (

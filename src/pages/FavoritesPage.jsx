@@ -5,14 +5,14 @@ import SearchBox from "../components/SearchBox";
 import { ContactsContext } from "../context/ContactsContext";
 
 const FavoritesPage = () => {
-  const { contacts } = useContext(ContactsContext);
+  const { filteredContacts } = useContext(ContactsContext);
 
   return (
     <>
       <Navbar isHomePage={false} />
       <SearchBox />
       <section>
-        {contacts?.map((contact) => {
+        {filteredContacts?.map((contact) => {
           return <ContactCard key={contact.id} {...contact} />;
         })}
       </section>

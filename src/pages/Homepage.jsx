@@ -6,7 +6,7 @@ import SearchBox from "../components/SearchBox";
 import { ContactsContext } from "../context/ContactsContext";
 
 const Homepage = () => {
-  const { contacts } = useContext(ContactsContext);
+  const { filteredContacts } = useContext(ContactsContext);
 
   return (
     <>
@@ -14,7 +14,7 @@ const Homepage = () => {
       <SearchBox />
       <section>
         <AddNewCard />
-        {contacts?.map((contact) => {
+        {filteredContacts?.map((contact) => {
           return <ContactCard key={contact.id} {...contact} />;
         })}
       </section>
