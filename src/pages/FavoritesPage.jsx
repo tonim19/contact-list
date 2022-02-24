@@ -12,9 +12,11 @@ const FavoritesPage = () => {
       <Navbar isHomePage={false} />
       <SearchBox />
       <section>
-        {filteredContacts?.map((contact) => {
-          return <ContactCard key={contact.id} {...contact} />;
-        })}
+        {filteredContacts
+          ?.filter((contact) => contact.isFavorite)
+          ?.map((contact) => {
+            return <ContactCard key={contact.id} {...contact} />;
+          })}
       </section>
     </>
   );

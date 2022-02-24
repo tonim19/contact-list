@@ -1,4 +1,4 @@
-const contacts = [
+const data = [
   {
     id: 1,
     fullName: "Toni Morovic",
@@ -29,4 +29,4 @@ const contacts = [
   },
 ];
 
-export default contacts;
+export default data;
