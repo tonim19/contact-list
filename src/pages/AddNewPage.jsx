@@ -92,6 +92,8 @@ const AddNewPage = () => {
           <img
             className="back-btn"
             src={Back}
+            width={21}
+            height={16}
             alt="Back Button"
             onClick={() => navigate("/")}
           />

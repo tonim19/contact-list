@@ -44,6 +44,7 @@ const DetailsPage = () => {
         <img
           className="back-btn"
           src={Back}
+          width={16}
           alt="Back Button"
           onClick={() => navigate("/")}
         />
@@ -52,9 +53,15 @@ const DetailsPage = () => {
             className="heart-icon"
             src={currentContact?.isFavorite ? Favorite : NotFavorite}
             alt="Heart Icon"
+            width={15}
             onClick={toggleFavorite}
           />
-          <img className="pencil-icon" src={Pencil} alt="Edit Icon" />
+          <img
+            className="pencil-icon"
+            src={Pencil}
+            width={16}
+            alt="Edit Icon"
+          />
         </div>
       </div>
       <div className="photo-name">

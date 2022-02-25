@@ -33,11 +33,6 @@ header .header {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-header .logo {
-  width: 150px;
-  transform: translateX(-15px);
-}
-
 header .rectangle {
   position: absolute;
   top: 43px;
