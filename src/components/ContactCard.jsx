@@ -23,6 +23,13 @@ const ContactCard = ({ fullName, image, isFavorite, id }) => {
     setContacts(newContacts);
   };
 
+  const removeContact = () => {
+    const newContacts = contacts
+      .filter((contact) => contact.id !== id)
+      .map((contact) => contact);
+    setContacts(newContacts);
+  };
+
   return (
     <div className="contact-card">
       <img className="contact-image" src={image} alt="Contact Img" />
@@ -34,7 +41,12 @@ const ContactCard = ({ fullName, image, isFavorite, id }) => {
         onClick={toggleFavorite}
       />
       <img className="pencil-icon" src={Pencil} alt="Edit Icon" />
-      <img className="trash-icon" src={Trash} alt="Delete Icon" />
+      <img
+        className="trash-icon"
+        onClick={removeContact}
+        src={Trash}
+        alt="Delete Icon"
+      />
     </div>
   );
 };

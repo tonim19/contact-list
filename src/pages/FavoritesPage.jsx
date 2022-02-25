@@ -11,7 +11,7 @@ const FavoritesPage = () => {
     <>
       <Navbar isHomePage={false} />
       <SearchBox />
-      <section>
+      <section id="favoritepage">
         {filteredContacts
           ?.filter((contact) => contact.isFavorite)
           ?.map((contact) => {

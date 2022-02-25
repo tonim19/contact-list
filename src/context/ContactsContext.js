@@ -13,13 +13,13 @@ export const ContactProvider = (props) => {
   );
 
   useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-  }, [contacts]);
-
-  useEffect(() => {
     const localStorageData = localStorage.getItem("contacts");
     setContacts(JSON.parse(localStorageData));
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <ContactsContext.Provider

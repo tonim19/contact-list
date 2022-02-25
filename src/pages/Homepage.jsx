@@ -12,7 +12,7 @@ const Homepage = () => {
     <>
       <Navbar isHomePage={true} />
       <SearchBox />
-      <section>
+      <section id="homepage">
         <AddNewCard />
         {filteredContacts?.map((contact) => {
           return <ContactCard key={contact.id} {...contact} />;
