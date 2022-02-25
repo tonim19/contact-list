@@ -4,15 +4,16 @@ import { ContactsContext } from "../context/ContactsContext";
 import { v4 as uuidv4 } from "uuid";
 import Axios from "axios";
 import Back from "../assets/svg/Back.svg";
-import Upload from "../assets/svg/Upload.svg";
-import Person from "../assets/svg/Person.svg";
-import Mail from "../assets/svg/Mail.svg";
-import Phone from "../assets/svg/Phone.svg";
 import AddNumber from "../assets/svg/AddNumber.svg";
-import Cross from "../assets/svg/Cross.svg";
+import NumbersCard from "../components/NumbersCard";
+import PhotoCard from "../components/PhotoCard";
+import FullnameCard from "../components/FullnameCard";
+import EmailCard from "../components/EmailCard";
 
 const AddNewPage = () => {
   const navigate = useNavigate();
+
+  const [error, setError] = useState("");
 
   const { contacts, setContacts } = useContext(ContactsContext);
 
@@ -49,7 +50,10 @@ const AddNewPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!fullName || !email || !numbers || !imageUrl) return;
+    if (!fullName || !email || !email.includes("@") || !numbers || !imageUrl) {
+      setTimeout(() => setError(""), 3000);
+      return setError("You must fill in all of the fields.");
+    }
 
     const uuid = uuidv4();
 
@@ -93,89 +97,14 @@ const AddNewPage = () => {
           />
         </div>
         <form>
-          <div className="photo-section">
-            <label htmlFor="image" className="photo-box">
-              {imageUrl ? (
-                <img className="contact-image" src={imageUrl} alt="Contact" />
-              ) : (
-                <>
-                  <img className="img" src={Upload} alt="Upload Button" />
-                  <input
-                    type="file"
-                    name="image"
-                    id="image"
-                    onChange={(e) => uploadImage(e.target.files)}
-                  />
-                </>
-              )}
-            </label>
-          </div>
+          <PhotoCard imageUrl={imageUrl} uploadImage={uploadImage} />
           <div className="details-section">
-            <label htmlFor="name">
-              <img src={Person} alt="" />
-              <span className="label-text">full name</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
+            <FullnameCard fullName={fullName} setFullName={setFullName} />
+            <EmailCard email={email} setEmail={setEmail} />
+            <NumbersCard
+              numbers={numbers}
+              handleChangeNumber={handleChangeNumber}
             />
-            <label htmlFor="email">
-              <img src={Mail} alt="" />
-              <span className="label-text">email</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              required
-            />
-            <label htmlFor="number">
-              <img src={Phone} alt="" />
-              <span className="label-text">numbers</span>
-            </label>
-            {numbers.map((number, index) => {
-              return (
-                <div key={index}>
-                  <input
-                    className="number"
-                    type="text"
-                    name="number"
-                    id="number"
-                    value={number.number}
-                    onChange={(event) => handleChangeNumber(event, index)}
-                    placeholder="Number"
-                    required
-                  />
-                  <div className="label-remove">
-                    <input
-                      className="label"
-                      type="text"
-                      name="label"
-                      value={number.label}
-                      onChange={(event) => handleChangeNumber(event, index)}
-                      placeholder="Label"
-                      required
-                    />
-                    <button className="remove-btn">
-                      <img
-                        className="cross-icon"
-                        src={Cross}
-                        fill="#bbc4c3"
-                        alt="Cross Icon"
-                      />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
             <div className="add-number">
               <div className="circle" onClick={handleAddFields}>
                 <img
@@ -183,11 +112,15 @@ const AddNewPage = () => {
                   src={AddNumber}
                   alt="Add Icon"
                 />
+                {error ? <div className="error-message">{error}</div> : ""}
               </div>
               <span className="label-text">Add Number</span>
             </div>
+
             <div className="btns">
-              <button id="btn-cancel">Cancel</button>
+              <button id="btn-cancel" onClick={() => navigate("/")}>
+                Cancel
+              </button>
               <button id="btn-save" type="submit" onClick={handleSubmit}>
                 Save
               </button>

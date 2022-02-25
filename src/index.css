@@ -13,6 +13,10 @@ body {
   background-color: #ffffff;
 }
 
+button {
+  cursor: pointer;
+}
+
 header .header {
   display: flex;
   justify-content: center;
@@ -61,6 +65,7 @@ nav .contacts {
   font-weight: bold;
   padding: 16px 40px;
   text-align: center;
+  cursor: pointer;
 }
 
 nav .line {
@@ -73,6 +78,7 @@ nav .favorites {
   color: #adb8b6;
   font-weight: bold;
   padding: 16px 40px;
+  cursor: pointer;
 }
 
 .search-box {
@@ -120,6 +126,7 @@ nav .favorites {
   opacity: 0.5;
   border-radius: 4px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .add-box {
@@ -171,14 +178,17 @@ nav .favorites {
 
 .contact-card .heart-icon {
   margin-left: 42px;
+  cursor: pointer;
 }
 
 .contact-card .pencil-icon {
   margin-left: 33px;
+  cursor: pointer;
 }
 
 .contact-card .trash-icon {
   margin-left: 32px;
+  cursor: pointer;
 }
 
 .back-section {
@@ -192,6 +202,7 @@ nav .favorites {
 
 .back-section .back-btn {
   margin-left: 29px;
+  cursor: pointer;
 }
 
 .photo-section {
@@ -211,6 +222,7 @@ nav .favorites {
   border: 3px solid rgba(187, 196, 195, 0.3);
   background-color: rgba(45, 161, 173, 0.4);
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .photo-box .contact-image {
@@ -303,6 +315,7 @@ input[type="file"] {
   height: 32px;
   border: 1px solid #2da1ad;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .add-number .add-number-icon {
@@ -310,6 +323,15 @@ input[type="file"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.error-message {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  text-align: center;
+  width: 325px;
+  color: red;
 }
 
 .details-section .btns {
