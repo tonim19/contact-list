@@ -166,6 +166,7 @@ nav .favorites {
   border: 3px solid rgba(187, 196, 195, 0.3);
   border-radius: 50%;
   margin-left: 13px;
+  cursor: pointer;
 }
 
 .contact-card .contact-name {
@@ -174,6 +175,7 @@ nav .favorites {
   width: 109px;
   color: #adb8b6;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .contact-card .heart-icon {
@@ -356,4 +358,107 @@ input[type="file"] {
   background-color: #2da1ad;
   border: none;
   color: #ffffff;
+}
+
+#details-page .back-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#details-page .heart-icon {
+  margin-right: 34px;
+  cursor: pointer;
+}
+
+#details-page .pencil-icon {
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.photo-name {
+  width: 325px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px solid #2da1ad;
+}
+
+.photo-name .contact-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid rgba(187, 196, 195, 0.3);
+}
+
+.photo-name .contact-name {
+  margin-left: 23px;
+  color: #adb8b6;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 28px;
+}
+
+.container {
+  width: 325px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.container .detail-email {
+  height: 120px;
+  padding: 30px 25px;
+}
+
+.detail-email .email {
+  margin-left: 9px;
+  color: #27919d;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+.detail-email .email-span {
+  color: #adb8b6;
+}
+
+.numbers-logo {
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+}
+
+.numbers-span {
+  margin-left: 9px;
+  color: #27919d;
+  font-weight: bold;
+  line-height: 19px;
+}
+
+.numbers-wrapper {
+  width: 325px;
+}
+
+.numbers-wrapper .number-pairs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 25px;
+  text-align: left;
+}
+
+.number-pairs .label {
+  font-weight: bold;
+  color: #adb8b6;
+}
+
+.number-pairs .number {
+  font-size: 16px;
+  font-weight: normal;
+  color: #adb8b6;
+  text-decoration: underline;
 }

@@ -1,10 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-import data from "../data/data";
 
 export const ContactsContext = createContext(null);
 
 export const ContactProvider = (props) => {
-  const [contacts, setContacts] = useState(data);
+  const [contacts, setContacts] = useState([]);
 
   const [text, setText] = useState("");
 

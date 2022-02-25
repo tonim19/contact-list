@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Favorite from "../assets/svg/Favorite.svg";
 import NotFavorite from "../assets/svg/NotFavorite.svg";
 import Pencil from "../assets/svg/Pencil.svg";
@@ -6,6 +7,8 @@ import Trash from "../assets/svg/Trash.svg";
 import { ContactsContext } from "../context/ContactsContext";
 
 const ContactCard = ({ fullName, image, isFavorite, id }) => {
+  const navigate = useNavigate();
+
   const { contacts, setContacts } = useContext(ContactsContext);
 
   const toggleFavorite = () => {
@@ -32,8 +35,15 @@ const ContactCard = ({ fullName, image, isFavorite, id }) => {
 
   return (
     <div className="contact-card">
-      <img className="contact-image" src={image} alt="Contact Img" />
-      <span className="contact-name">{fullName}</span>
+      <img
+        className="contact-image"
+        src={image}
+        alt="Contact Img"
+        onClick={() => navigate(`/details/${id}`)}
+      />
+      <span className="contact-name" onClick={() => navigate(`/details/${id}`)}>
+        {fullName}
+      </span>
       <img
         className="heart-icon"
         src={isFavorite ? Favorite : NotFavorite}
