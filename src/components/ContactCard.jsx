@@ -6,7 +6,7 @@ import Pencil from "../assets/svg/Pencil.svg";
 import Trash from "../assets/svg/Trash.svg";
 import { ContactsContext } from "../context/ContactsContext";
 
-const ContactCard = ({ fullName, image, isFavorite, id }) => {
+const ContactCard = ({ fullName, imageUrl, isFavorite, id }) => {
   const navigate = useNavigate();
 
   const { contacts, setContacts } = useContext(ContactsContext);
@@ -37,7 +37,7 @@ const ContactCard = ({ fullName, image, isFavorite, id }) => {
     <div className="contact-card">
       <img
         className="contact-image"
-        src={image}
+        src={imageUrl}
         alt="Contact Img"
         onClick={() => navigate(`/details/${id}`)}
       />
@@ -50,7 +50,12 @@ const ContactCard = ({ fullName, image, isFavorite, id }) => {
         alt="Heart Icon"
         onClick={toggleFavorite}
       />
-      <img className="pencil-icon" src={Pencil} alt="Edit Icon" />
+      <img
+        className="pencil-icon"
+        src={Pencil}
+        alt="Edit Icon"
+        onClick={() => navigate(`/edit/${id}`)}
+      />
       <img
         className="trash-icon"
         onClick={removeContact}

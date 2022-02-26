@@ -1,14 +1,27 @@
 import Phone from "../assets/svg/Phone.svg";
 import Cross from "../assets/svg/Cross.svg";
 
-const NumbersCard = ({ handleChangeNumber, numbers }) => {
+const NumbersCard = ({ contact, setNumbers }) => {
+  const handleChangeNumber = (e, index) => {
+    const values = [...contact.numbers];
+    values[index][e.target.name] = e.target.value;
+    setNumbers({ ...contact, numbers: values });
+  };
+
+  const handleRemove = (e, index) => {
+    e.preventDefault();
+    const values = [...contact.numbers];
+    values.splice(index, 1);
+    setNumbers({ ...contact, numbers: values });
+  };
+
   return (
     <>
       <label htmlFor="number">
         <img src={Phone} alt="" />
         <span className="label-text">numbers</span>
       </label>
-      {numbers.map((number, index) => {
+      {contact?.numbers?.map((number, index) => {
         return (
           <div key={index}>
             <input
@@ -16,8 +29,8 @@ const NumbersCard = ({ handleChangeNumber, numbers }) => {
               type="text"
               name="number"
               id="number"
-              value={number.number}
-              onChange={(event) => handleChangeNumber(event, index)}
+              value={number?.number}
+              onChange={(e) => handleChangeNumber(e, index)}
               placeholder="Number"
               required
             />
@@ -26,12 +39,15 @@ const NumbersCard = ({ handleChangeNumber, numbers }) => {
                 className="label"
                 type="text"
                 name="label"
-                value={number.label}
-                onChange={(event) => handleChangeNumber(event, index)}
+                value={number?.label}
+                onChange={(e) => handleChangeNumber(e, index)}
                 placeholder="Label"
                 required
               />
-              <button className="remove-btn">
+              <button
+                className="remove-btn"
+                onClick={(e) => handleRemove(e, index)}
+              >
                 <img
                   className="cross-icon"
                   src={Cross}

@@ -1,6 +1,10 @@
 import Person from "../assets/svg/Person.svg";
 
-const FullnameCard = ({ fullName, setFullName }) => {
+const FullnameCard = ({ contact, setFullname }) => {
+  const handleChange = (e) => {
+    setFullname({ ...contact, fullName: e.target.value });
+  };
+
   return (
     <>
       <label htmlFor="name">
@@ -12,8 +16,8 @@ const FullnameCard = ({ fullName, setFullName }) => {
         name="name"
         id="name"
         placeholder="Full Name"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
+        value={contact?.fullName}
+        onChange={handleChange}
         required
       />
     </>

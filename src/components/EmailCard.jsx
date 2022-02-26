@@ -1,6 +1,10 @@
 import Mail from "../assets/svg/Mail.svg";
 
-const EmailCard = ({ email, setEmail }) => {
+const EmailCard = ({ contact, setEmail }) => {
+  const handleChange = (e) => {
+    setEmail({ ...contact, email: e.target.value });
+  };
+
   return (
     <>
       <label htmlFor="email">
@@ -11,8 +15,8 @@ const EmailCard = ({ email, setEmail }) => {
         type="email"
         name="email"
         id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={contact?.email}
+        onChange={handleChange}
         placeholder="Email"
         required
       />

@@ -61,20 +61,21 @@ const DetailsPage = () => {
             src={Pencil}
             width={16}
             alt="Edit Icon"
+            onClick={() => navigate(`/edit/${currentContact.id}`)}
           />
         </div>
       </div>
       <div className="photo-name">
         <img
           className="contact-image"
-          src={currentContact?.image}
+          src={currentContact?.imageUrl}
           alt="Contact Img"
         />
         <span className="contact-name">{currentContact?.fullName}</span>
       </div>
       <div className="container">
         <div className="detail-email">
-          <div>
+          <div className="logo-mail-wrapper">
             <img src={Mail} alt="Mail" />
             <span className="email">email</span>
           </div>

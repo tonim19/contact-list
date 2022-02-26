@@ -1,7 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 import { ContactsContext } from "../context/ContactsContext";
-import { v4 as uuidv4 } from "uuid";
 import Back from "../assets/svg/Back.svg";
 import NumbersCard from "../components/NumbersCard";
 import PhotoCard from "../components/PhotoCard";
@@ -9,14 +8,16 @@ import FullnameCard from "../components/FullnameCard";
 import EmailCard from "../components/EmailCard";
 import AddNumberFieldsCard from "../components/AddNumberFieldsCard";
 
-const AddNewPage = () => {
+const EditPage = () => {
   const navigate = useNavigate();
+
+  const params = useParams();
 
   const { contacts, setContacts } = useContext(ContactsContext);
 
   const [error, setError] = useState("");
 
-  const [newContact, setNewContact] = useState({
+  const [editContact, setEditContact] = useState({
     id: "",
     imageUrl: "",
     fullName: "",
@@ -24,48 +25,47 @@ const AddNewPage = () => {
     numbers: [{ number: "", label: "" }],
   });
 
+  useEffect(() => {
+    const editContact = contacts?.filter(
+      (contact) => contact.id.toString() === params.contactId
+    );
+    if (editContact.length > 0) {
+      setEditContact({ ...editContact[0] });
+    }
+  }, [contacts, params.contactId]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (
-      !newContact.fullName ||
-      !newContact.email ||
-      !newContact.email.includes("@") ||
-      !newContact.numbers ||
-      !newContact.imageUrl
+      !editContact.fullName ||
+      !editContact.email ||
+      !editContact.email.includes("@") ||
+      !editContact.numbers ||
+      !editContact.imageUrl
     ) {
       setTimeout(() => setError(""), 3000);
       return setError("You must fill in all of the fields.");
     }
 
-    const uuid = uuidv4();
+    const newObject = contacts.map((contact) => {
+      if (contact.id === editContact.id) {
+        return {
+          id: editContact.id,
+          fullName: editContact.fullName,
+          email: editContact.email,
+          numbers: editContact.numbers,
+          imageUrl: editContact.imageUrl,
+          isFavorite: false,
+        };
+      } else {
+        return contact;
+      }
+    });
 
-    if (contacts) {
-      setContacts([
-        ...contacts,
-        {
-          id: uuid,
-          fullName: newContact.fullName,
-          email: newContact.email,
-          numbers: newContact.numbers,
-          imageUrl: newContact.imageUrl,
-          isFavorite: false,
-        },
-      ]);
-      navigate("/");
-    } else {
-      setContacts([
-        {
-          id: uuid,
-          fullName: newContact.fullName,
-          email: newContact.email,
-          numbers: newContact.numbers,
-          imageUrl: newContact.imageUrl,
-          isFavorite: false,
-        },
-      ]);
-      navigate("/");
-    }
+    setContacts(newObject);
+
+    navigate("/");
   };
 
   return (
@@ -81,14 +81,14 @@ const AddNewPage = () => {
           />
         </div>
         <form>
-          <PhotoCard contact={newContact} setImageUrl={setNewContact} />
+          <PhotoCard contact={editContact} setImageUrl={setEditContact} />
           <div className="details-section">
-            <FullnameCard contact={newContact} setFullname={setNewContact} />
-            <EmailCard contact={newContact} setEmail={setNewContact} />
-            <NumbersCard contact={newContact} setNumbers={setNewContact} />
+            <FullnameCard contact={editContact} setFullname={setEditContact} />
+            <EmailCard contact={editContact} setEmail={setEditContact} />
+            <NumbersCard contact={editContact} setNumbers={setEditContact} />
             <AddNumberFieldsCard
-              contact={newContact}
-              addNumberFields={setNewContact}
+              contact={editContact}
+              addNumberFields={setEditContact}
             />
             {error ? <div className="error-message">{error}</div> : ""}
             <div className="btns">
@@ -106,4 +106,4 @@ const AddNewPage = () => {
   );
 };
 
-export default AddNewPage;
+export default EditPage;

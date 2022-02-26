@@ -5,6 +5,7 @@ import { ContactProvider } from "./context/ContactsContext";
 import FavoritesPage from "./pages/FavoritesPage";
 import AddNewPage from "./pages/AddNewPage";
 import DetailsPage from "./pages/DetailsPage";
+import EditPage from "./pages/EditPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/add-new" element={<AddNewPage />} />
             <Route path="details/:contactId" element={<DetailsPage />} />
+            <Route path="edit/:contactId" element={<EditPage />} />
           </Routes>
         </BrowserRouter>
       </ContactProvider>

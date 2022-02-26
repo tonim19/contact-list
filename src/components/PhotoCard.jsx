@@ -1,18 +1,35 @@
+import Axios from "axios";
 import Upload from "../assets/svg/Upload.svg";
 
-const PhotoCard = ({ uploadImage, imageUrl }) => {
+const PhotoCard = ({ setImageUrl, contact }) => {
+  const handleChange = (e) => {
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    formData.append("upload_preset", "rbitpokw");
+    Axios.post(
+      "http://api.cloudinary.com/v1_1/dt1mvgryx/image/upload/",
+      formData
+    ).then((res) => {
+      setImageUrl({ ...contact, imageUrl: res.data.url });
+    });
+  };
+
   return (
     <>
       <div className="photo-section">
         <label htmlFor="image" className="photo-box">
-          {imageUrl ? (
+          {contact?.imageUrl ? (
             <>
-              <img className="contact-image" src={imageUrl} alt="Contact" />
+              <img
+                className="contact-image"
+                src={contact.imageUrl}
+                alt="Contact"
+              />
               <input
                 type="file"
                 name="image"
                 id="image"
-                onChange={(e) => uploadImage(e.target.files)}
+                onChange={handleChange}
               />
             </>
           ) : (
@@ -22,7 +39,7 @@ const PhotoCard = ({ uploadImage, imageUrl }) => {
                 type="file"
                 name="image"
                 id="image"
-                onChange={(e) => uploadImage(e.target.files)}
+                onChange={handleChange}
               />
             </>
           )}
