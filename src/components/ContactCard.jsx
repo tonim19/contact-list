@@ -5,6 +5,7 @@ import NotFavorite from "../assets/svg/NotFavorite.svg";
 import Pencil from "../assets/svg/Pencil.svg";
 import Trash from "../assets/svg/Trash.svg";
 import { ContactsContext } from "../context/ContactsContext";
+import Avatar from "../assets/img/avatar.png";
 
 const ContactCard = ({ fullName, imageUrl, isFavorite, id }) => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const ContactCard = ({ fullName, imageUrl, isFavorite, id }) => {
     <div className="contact-card">
       <img
         className="contact-image"
-        src={imageUrl}
+        src={imageUrl ? imageUrl : Avatar}
         alt="Contact Img"
         onClick={() => navigate(`/details/${id}`)}
       />

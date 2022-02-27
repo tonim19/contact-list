@@ -7,6 +7,7 @@ import NotFavorite from "../assets/svg/NotFavorite.svg";
 import Pencil from "../assets/svg/Pencil.svg";
 import Mail from "../assets/svg/Mail.svg";
 import Phone from "../assets/svg/Phone.svg";
+import Avatar from "../assets/img/avatar.png";
 
 const DetailsPage = () => {
   const params = useParams();
@@ -68,7 +69,7 @@ const DetailsPage = () => {
       <div className="photo-name">
         <img
           className="contact-image"
-          src={currentContact?.imageUrl}
+          src={currentContact?.imageUrl ? currentContact.imageUrl : Avatar}
           alt="Contact Img"
         />
         <span className="contact-name">{currentContact?.fullName}</span>

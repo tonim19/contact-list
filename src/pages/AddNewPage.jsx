@@ -31,8 +31,7 @@ const AddNewPage = () => {
       !newContact.fullName ||
       !newContact.email ||
       !newContact.email.includes("@") ||
-      !newContact.numbers ||
-      !newContact.imageUrl
+      !newContact.numbers
     ) {
       setTimeout(() => setError(""), 3000);
       return setError("You must fill in all of the fields.");

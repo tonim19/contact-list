@@ -1,4 +1,4 @@
-import Axios from "axios";
+import axios from "axios";
 import Upload from "../assets/svg/Upload.svg";
 
 const PhotoCard = ({ setImageUrl, contact }) => {
@@ -6,12 +6,11 @@ const PhotoCard = ({ setImageUrl, contact }) => {
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
     formData.append("upload_preset", "rbitpokw");
-    Axios.post(
-      "http://api.cloudinary.com/v1_1/dt1mvgryx/image/upload/",
-      formData
-    ).then((res) => {
-      setImageUrl({ ...contact, imageUrl: res.data.url });
-    });
+    axios
+      .post("http://api.cloudinary.com/v1_1/dt1mvgryx/image/upload/", formData)
+      .then((res) => {
+        setImageUrl({ ...contact, imageUrl: res.data.url });
+      });
   };
 
   return (
