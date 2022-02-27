@@ -41,8 +41,7 @@ const EditPage = () => {
       !editContact.fullName ||
       !editContact.email ||
       !editContact.email.includes("@") ||
-      !editContact.numbers ||
-      !editContact.imageUrl
+      !editContact.numbers
     ) {
       setTimeout(() => setError(""), 3000);
       return setError("You must fill in all of the fields.");

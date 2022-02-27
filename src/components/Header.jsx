@@ -5,7 +5,7 @@ const Header = () => {
     <header>
       <div className="header">
         <div className="logo">
-          <img src={Logo} width={150} alt="Logo" />
+          <img src={Logo} alt="Logo" />
         </div>
         <div className="rectangle"></div>
       </div>

@@ -36,33 +36,40 @@ const ContactCard = ({ fullName, imageUrl, isFavorite, id }) => {
 
   return (
     <div className="contact-card">
-      <img
-        className="contact-image"
-        src={imageUrl ? imageUrl : Avatar}
-        alt="Contact Img"
-        onClick={() => navigate(`/details/${id}`)}
-      />
-      <span className="contact-name" onClick={() => navigate(`/details/${id}`)}>
-        {fullName}
-      </span>
-      <img
-        className="heart-icon"
-        src={isFavorite ? Favorite : NotFavorite}
-        alt="Heart Icon"
-        onClick={toggleFavorite}
-      />
-      <img
-        className="pencil-icon"
-        src={Pencil}
-        alt="Edit Icon"
-        onClick={() => navigate(`/edit/${id}`)}
-      />
-      <img
-        className="trash-icon"
-        onClick={removeContact}
-        src={Trash}
-        alt="Delete Icon"
-      />
+      <div className="contact-image-name">
+        <img
+          className="contact-image"
+          src={imageUrl ? imageUrl : Avatar}
+          alt="Contact Img"
+          onClick={() => navigate(`/details/${id}`)}
+        />
+        <span
+          className="contact-name"
+          onClick={() => navigate(`/details/${id}`)}
+        >
+          {fullName}
+        </span>
+      </div>
+      <div className="contact-logos">
+        <img
+          className="heart-icon"
+          src={isFavorite ? Favorite : NotFavorite}
+          alt="Heart Icon"
+          onClick={toggleFavorite}
+        />
+        <img
+          className="pencil-icon"
+          src={Pencil}
+          alt="Edit Icon"
+          onClick={() => navigate(`/edit/${id}`)}
+        />
+        <img
+          className="trash-icon"
+          onClick={removeContact}
+          src={Trash}
+          alt="Delete Icon"
+        />
+      </div>
     </div>
   );
 };

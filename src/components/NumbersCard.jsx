@@ -23,7 +23,7 @@ const NumbersCard = ({ contact, setNumbers }) => {
       </label>
       {contact?.numbers?.map((number, index) => {
         return (
-          <div key={index}>
+          <div className="number-pair-flex" key={index}>
             <input
               className="number"
               type="text"
