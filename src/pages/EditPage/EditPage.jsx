@@ -36,6 +36,7 @@ const EditPage = () => {
     fullName: "",
     email: "",
     numbers: [{ number: "", label: "" }],
+    isFavorite: "",
   });
 
   const [openModal, setOpenModal] = useState(false);
@@ -70,7 +71,7 @@ const EditPage = () => {
           email: editContact.email,
           numbers: editContact.numbers,
           imageUrl: editContact.imageUrl,
-          isFavorite: false,
+          isFavorite: editContact.isFavorite,
         };
       } else {
         return contact;

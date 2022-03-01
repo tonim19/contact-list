@@ -1,5 +1,5 @@
 import Phone from "../../assets/svg/Phone.svg";
-import Cross from "../../assets/svg/Cross.svg";
+import CrossGrey from "../../assets/svg/CrossGrey.svg";
 import { Input } from "../styles/Input.styled";
 import { Label } from "../styles/Label.styled";
 import { CellRemoveBtn, NumberPairs, RemoveBtn } from "./NumbersCard.styled";
@@ -31,7 +31,6 @@ const NumbersCard = ({ contact, setNumbers }) => {
               className="number"
               type="text"
               name="number"
-              id="number"
               value={number?.number}
               onChange={(e) => handleChangeNumber(e, index)}
               placeholder="Number"
@@ -53,9 +52,8 @@ const NumbersCard = ({ contact, setNumbers }) => {
               >
                 <img
                   className="cross-icon"
-                  src={Cross}
+                  src={CrossGrey}
                   width={8}
-                  fill="#bbc4c3"
                   alt="Cross Icon"
                 />
               </RemoveBtn>
