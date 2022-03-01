@@ -17,8 +17,11 @@ export const BackSection = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   border-bottom: 1px solid rgba(187, 196, 195, 0.5);
+  .delete-span {
+    display: none;
+  }
 
   @media screen and (min-width: 1440px) {
     height: 94px;
@@ -28,12 +31,45 @@ export const BackSection = styled.div`
     justify-content: flex-start;
     border-bottom: none;
     margin-left: 214px;
+
+    .delete-block {
+      cursor: pointer;
+
+      .delete-span {
+        font-size: 14px;
+        line-height: 17px;
+        color: #bbc4c3;
+        display: inline-block;
+        position: absolute;
+        top: 52px;
+        right: 29px;
+      }
+    }
+  }
+`;
+
+export const TrashIcon = styled.img`
+  margin-right: 31px;
+  cursor: pointer;
+
+  @media screen and (min-width: 1440px) {
+    margin-right: 0;
+    position: absolute;
+    top: 52px;
+    right: 0;
   }
 `;
 
 export const BackIcon = styled.img`
   margin-left: 29px;
   cursor: pointer;
+
+  @media screen and (min-width: 1440px) {
+    margin-left: 0;
+    position: absolute;
+    top: 52px;
+    left: 220px;
+  }
 `;
 
 export const DetailsSection = styled.section`

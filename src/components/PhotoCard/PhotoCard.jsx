@@ -1,11 +1,15 @@
 import axios from "axios";
 import {
   StyledPhotoCard,
+  PhotoCardDiv,
   PhotoCardLabel,
   PhotoCardImage,
+  PhotoCardLogo,
   PhotoCardFileInput,
+  PhotoOverlay,
 } from "./PhotoCard.styled.js";
 import Upload from "../../assets/svg/Upload.svg";
+import Cross from "../../assets/svg/Cross.svg";
 
 const PhotoCard = ({ setImageUrl, contact }) => {
   const handleChange = (e) => {
@@ -22,29 +26,30 @@ const PhotoCard = ({ setImageUrl, contact }) => {
   return (
     <>
       <StyledPhotoCard>
-        <PhotoCardLabel htmlFor="image">
-          {contact?.imageUrl ? (
-            <>
+        {contact?.imageUrl ? (
+          <>
+            <PhotoCardDiv>
               <PhotoCardImage src={contact.imageUrl} alt="Contact" />
+              <PhotoOverlay
+                onClick={() => setImageUrl({ ...contact, imageUrl: "" })}
+              >
+                <img src={Cross} alt="Cross" className="cross-logo" />
+              </PhotoOverlay>
+            </PhotoCardDiv>
+          </>
+        ) : (
+          <>
+            <PhotoCardLabel htmlFor="image">
+              <PhotoCardLogo src={Upload} alt="Upload Button" />
               <PhotoCardFileInput
                 type="file"
                 name="image"
                 id="image"
                 onChange={handleChange}
               />
-            </>
-          ) : (
-            <>
-              <PhotoCardImage src={Upload} alt="Upload Button" />
-              <PhotoCardFileInput
-                type="file"
-                name="image"
-                id="image"
-                onChange={handleChange}
-              />
-            </>
-          )}
-        </PhotoCardLabel>
+            </PhotoCardLabel>
+          </>
+        )}
       </StyledPhotoCard>
     </>
   );

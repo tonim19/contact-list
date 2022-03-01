@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { ContactsContext } from "../../context/ContactsContext";
+import Trash from "../../assets/svg/Trash.svg";
 import Back from "../../assets/svg/Back.svg";
 import NumbersCard from "../../components/NumbersCard/NumbersCard";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
@@ -16,7 +17,9 @@ import {
   Error,
   SaveBtn,
   StyledEditPage,
+  TrashIcon,
 } from "./EditPage.styled";
+import Modal from "../../components/Modal/Modal";
 
 const EditPage = () => {
   const navigate = useNavigate();
@@ -34,6 +37,8 @@ const EditPage = () => {
     email: "",
     numbers: [{ number: "", label: "" }],
   });
+
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const editContact = contacts?.filter(
@@ -79,6 +84,7 @@ const EditPage = () => {
 
   return (
     <>
+      {openModal && <Modal id={editContact.id} setOpenModal={setOpenModal} />}
       <StyledEditPage>
         <BackSection>
           <BackIcon
@@ -87,6 +93,10 @@ const EditPage = () => {
             alt="Back Button"
             onClick={() => navigate("/")}
           />
+          <div className="delete-block" onClick={() => setOpenModal(true)}>
+            <span className="delete-span">Delete</span>
+            <TrashIcon src={Trash} alt="Delete Icon" />
+          </div>
         </BackSection>
         <form>
           <PhotoCard contact={editContact} setImageUrl={setEditContact} />

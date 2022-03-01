@@ -25,6 +25,7 @@ export const AddNumberDiv = styled.div`
   .label-text {
     color: #27919d;
     margin-left: 15px;
+    cursor: pointer;
   }
 
   @media screen and (min-width: 1440px) {

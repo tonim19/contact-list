@@ -29,6 +29,7 @@ export const RemoveBtn = styled.button`
   opacity: 0.5;
   background-color: #ffffff;
   border-radius: 50%;
+  cursor: pointer;
 
   @media screen and (min-width: 1440px) {
     margin-left: 29px;

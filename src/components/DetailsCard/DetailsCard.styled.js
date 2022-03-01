@@ -17,6 +17,7 @@ export const StyledDetailsCard = styled.div`
 export const DetailsEmail = styled.div`
   height: 120px;
   padding: 30px 25px;
+  width: 100%;
 
   .email {
     margin-left: 9px;
@@ -50,6 +51,7 @@ export const DetailsEmail = styled.div`
 `;
 
 export const DetailsNumbers = styled.div`
+  width: 100%;
   @media screen and (min-width: 1440px) {
     width: 100%;
     display: flex;
@@ -73,7 +75,7 @@ export const EmailSpan = styled.span`
 export const NumbersLogoDiv = styled.div`
   padding: 0 25px;
   display: flex;
-  align-items: center;
+  align-items: space-between;
 
   @media screen and (min-width: 1440px) {
     padding: 0;
