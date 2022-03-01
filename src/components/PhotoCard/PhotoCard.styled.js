@@ -84,7 +84,8 @@ export const PhotoCardLogo = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
+  width: 23px;
+  height: 20px;
 `;
 
 export const PhotoCardFileInput = styled.input`
