@@ -1,4 +1,5 @@
-import AddNumber from "../assets/svg/AddNumber.svg";
+import AddNumber from "../../assets/svg/AddNumber.svg";
+import { AddNumberDiv } from "./AddNumberFieldsCard.styled";
 
 const AddNumberFieldsCard = ({ contact, addNumberFields }) => {
   const handleAddFields = () => {
@@ -10,14 +11,14 @@ const AddNumberFieldsCard = ({ contact, addNumberFields }) => {
 
   return (
     <>
-      <div className="add-number-fields">
+      <AddNumberDiv>
         <div className="circle" onClick={handleAddFields}>
           <img className="add-number-icon" src={AddNumber} alt="Add Icon" />
         </div>
         <span className="label-text" onClick={handleAddFields}>
           Add Number
         </span>
-      </div>
+      </AddNumberDiv>
     </>
   );
 };

@@ -1,5 +1,8 @@
-import Phone from "../assets/svg/Phone.svg";
-import Cross from "../assets/svg/Cross.svg";
+import Phone from "../../assets/svg/Phone.svg";
+import Cross from "../../assets/svg/Cross.svg";
+import { Input } from "../styles/Input.styled";
+import { Label } from "../styles/Label.styled";
+import { CellRemoveBtn, NumberPairs, RemoveBtn } from "./NumbersCard.styled";
 
 const NumbersCard = ({ contact, setNumbers }) => {
   const handleChangeNumber = (e, index) => {
@@ -17,14 +20,14 @@ const NumbersCard = ({ contact, setNumbers }) => {
 
   return (
     <>
-      <label htmlFor="number">
+      <Label htmlFor="number">
         <img src={Phone} alt="" />
         <span className="label-text">numbers</span>
-      </label>
+      </Label>
       {contact?.numbers?.map((number, index) => {
         return (
-          <div className="number-pair-flex" key={index}>
-            <input
+          <NumberPairs key={index}>
+            <Input
               className="number"
               type="text"
               name="number"
@@ -34,8 +37,8 @@ const NumbersCard = ({ contact, setNumbers }) => {
               placeholder="Number"
               required
             />
-            <div className="label-remove">
-              <input
+            <CellRemoveBtn>
+              <Input
                 className="label"
                 type="text"
                 name="label"
@@ -44,19 +47,20 @@ const NumbersCard = ({ contact, setNumbers }) => {
                 placeholder="Label"
                 required
               />
-              <button
+              <RemoveBtn
                 className="remove-btn"
                 onClick={(e) => handleRemove(e, index)}
               >
                 <img
                   className="cross-icon"
                   src={Cross}
+                  width={8}
                   fill="#bbc4c3"
                   alt="Cross Icon"
                 />
-              </button>
-            </div>
-          </div>
+              </RemoveBtn>
+            </CellRemoveBtn>
+          </NumberPairs>
         );
       })}
     </>

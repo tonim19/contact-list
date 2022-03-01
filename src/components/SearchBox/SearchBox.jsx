@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import Search from "../assets/svg/Search.svg";
-import { ContactsContext } from "../context/ContactsContext";
+import Search from "../../assets/svg/Search.svg";
+import { ContactsContext } from "../../context/ContactsContext";
+import { SearchIcon, SearchInput, StyledSearchBox } from "./SearchBox.styled";
 
 const SearchBox = () => {
   const { text, setText } = useContext(ContactsContext);
@@ -10,16 +11,15 @@ const SearchBox = () => {
   };
 
   return (
-    <div className="search-box">
-      <img className="search-icon" src={Search} alt="Search Icon" />
-      <input
+    <StyledSearchBox>
+      <SearchIcon className="search-icon" src={Search} alt="Search Icon" />
+      <SearchInput
         type="text"
         name="search"
-        className="search"
         value={text}
         onChange={handleChange}
       />
-    </div>
+    </StyledSearchBox>
   );
 };
 

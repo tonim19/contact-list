@@ -1,15 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
-import { ContactsContext } from "../context/ContactsContext";
+import { ContactsContext } from "../../context/ContactsContext";
 import { v4 as uuidv4 } from "uuid";
-import Back from "../assets/svg/Back.svg";
-import NumbersCard from "../components/NumbersCard";
-import PhotoCard from "../components/PhotoCard";
-import FullnameCard from "../components/FullnameCard";
-import EmailCard from "../components/EmailCard";
-import AddNumberFieldsCard from "../components/AddNumberFieldsCard";
+import Back from "../../assets/svg/Back.svg";
+import NumbersCard from "../../components/NumbersCard/NumbersCard";
+import PhotoCard from "../../components/PhotoCard/PhotoCard";
+import FullnameCard from "../../components/FullnameCard/FullnameCard";
+import EmailCard from "../../components/EmailCard";
+import AddNumberFieldsCard from "../../components/AddNumberFieldsCard/AddNumberFieldsCard";
+import {
+  BackIcon,
+  BackSection,
+  ButtonsDiv,
+  CancelBtn,
+  SaveBtn,
+  DetailsSection,
+  Error,
+  StyledCreatePage,
+} from "./Createpage.styled";
 
-const AddNewPage = () => {
+const CreatePage = () => {
   const navigate = useNavigate();
 
   const { contacts, setContacts } = useContext(ContactsContext);
@@ -69,19 +79,18 @@ const AddNewPage = () => {
 
   return (
     <>
-      <section id="addpage">
-        <div className="back-section">
-          <img
-            className="back-btn"
+      <StyledCreatePage>
+        <BackSection>
+          <BackIcon
             src={Back}
             width={21}
             alt="Back Button"
             onClick={() => navigate("/")}
           />
-        </div>
+        </BackSection>
         <form>
           <PhotoCard contact={newContact} setImageUrl={setNewContact} />
-          <div className="details-section">
+          <DetailsSection className="details-section">
             <FullnameCard contact={newContact} setFullname={setNewContact} />
             <EmailCard contact={newContact} setEmail={setNewContact} />
             <NumbersCard contact={newContact} setNumbers={setNewContact} />
@@ -89,20 +98,18 @@ const AddNewPage = () => {
               contact={newContact}
               addNumberFields={setNewContact}
             />
-            {error ? <div className="error-message">{error}</div> : ""}
-            <div className="btns">
-              <button id="btn-cancel" onClick={() => navigate("/")}>
-                Cancel
-              </button>
-              <button id="btn-save" type="submit" onClick={handleSubmit}>
+            {error ? <Error>{error}</Error> : ""}
+            <ButtonsDiv>
+              <CancelBtn onClick={() => navigate("/")}>Cancel</CancelBtn>
+              <SaveBtn type="submit" onClick={handleSubmit}>
                 Save
-              </button>
-            </div>
-          </div>
+              </SaveBtn>
+            </ButtonsDiv>
+          </DetailsSection>
         </form>
-      </section>
+      </StyledCreatePage>
     </>
   );
 };
 
-export default AddNewPage;
+export default CreatePage;

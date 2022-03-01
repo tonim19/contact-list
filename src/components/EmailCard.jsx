@@ -1,4 +1,6 @@
 import Mail from "../assets/svg/Mail.svg";
+import { Input } from "./styles/Input.styled";
+import { Label } from "./styles/Label.styled";
 
 const EmailCard = ({ contact, setEmail }) => {
   const handleChange = (e) => {
@@ -7,11 +9,11 @@ const EmailCard = ({ contact, setEmail }) => {
 
   return (
     <>
-      <label htmlFor="email">
+      <Label htmlFor="email">
         <img src={Mail} alt="" />
         <span className="label-text">email</span>
-      </label>
-      <input
+      </Label>
+      <Input
         type="email"
         name="email"
         id="email"

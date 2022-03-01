@@ -1,5 +1,11 @@
 import axios from "axios";
-import Upload from "../assets/svg/Upload.svg";
+import {
+  StyledPhotoCard,
+  PhotoCardLabel,
+  PhotoCardImage,
+  PhotoCardFileInput,
+} from "./PhotoCard.styled.js";
+import Upload from "../../assets/svg/Upload.svg";
 
 const PhotoCard = ({ setImageUrl, contact }) => {
   const handleChange = (e) => {
@@ -15,16 +21,12 @@ const PhotoCard = ({ setImageUrl, contact }) => {
 
   return (
     <>
-      <div className="photo-section">
-        <label htmlFor="image" className="photo-box">
+      <StyledPhotoCard>
+        <PhotoCardLabel htmlFor="image">
           {contact?.imageUrl ? (
             <>
-              <img
-                className="contact-image"
-                src={contact.imageUrl}
-                alt="Contact"
-              />
-              <input
+              <PhotoCardImage src={contact.imageUrl} alt="Contact" />
+              <PhotoCardFileInput
                 type="file"
                 name="image"
                 id="image"
@@ -33,8 +35,8 @@ const PhotoCard = ({ setImageUrl, contact }) => {
             </>
           ) : (
             <>
-              <img className="img" src={Upload} alt="Upload Button" />
-              <input
+              <PhotoCardImage src={Upload} alt="Upload Button" />
+              <PhotoCardFileInput
                 type="file"
                 name="image"
                 id="image"
@@ -42,8 +44,8 @@ const PhotoCard = ({ setImageUrl, contact }) => {
               />
             </>
           )}
-        </label>
-      </div>
+        </PhotoCardLabel>
+      </StyledPhotoCard>
     </>
   );
 };

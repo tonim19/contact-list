@@ -1,4 +1,6 @@
-import Person from "../assets/svg/Person.svg";
+import Person from "../../assets/svg/Person.svg";
+import { Input } from "../styles/Input.styled";
+import { Label } from "../styles/Label.styled";
 
 const FullnameCard = ({ contact, setFullname }) => {
   const handleChange = (e) => {
@@ -7,11 +9,11 @@ const FullnameCard = ({ contact, setFullname }) => {
 
   return (
     <>
-      <label htmlFor="name">
+      <Label htmlFor="name">
         <img src={Person} alt="" />
         <span className="label-text">full name</span>
-      </label>
-      <input
+      </Label>
+      <Input
         type="text"
         name="name"
         id="name"

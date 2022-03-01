@@ -1,12 +1,22 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
-import { ContactsContext } from "../context/ContactsContext";
-import Back from "../assets/svg/Back.svg";
-import NumbersCard from "../components/NumbersCard";
-import PhotoCard from "../components/PhotoCard";
-import FullnameCard from "../components/FullnameCard";
-import EmailCard from "../components/EmailCard";
-import AddNumberFieldsCard from "../components/AddNumberFieldsCard";
+import { ContactsContext } from "../../context/ContactsContext";
+import Back from "../../assets/svg/Back.svg";
+import NumbersCard from "../../components/NumbersCard/NumbersCard";
+import PhotoCard from "../../components/PhotoCard/PhotoCard";
+import FullnameCard from "../../components/FullnameCard/FullnameCard";
+import EmailCard from "../../components/EmailCard";
+import AddNumberFieldsCard from "../../components/AddNumberFieldsCard/AddNumberFieldsCard";
+import {
+  BackIcon,
+  BackSection,
+  ButtonsDiv,
+  CancelBtn,
+  DetailsSection,
+  Error,
+  SaveBtn,
+  StyledEditPage,
+} from "./EditPage.styled";
 
 const EditPage = () => {
   const navigate = useNavigate();
@@ -69,19 +79,18 @@ const EditPage = () => {
 
   return (
     <>
-      <section id="addpage">
-        <div className="back-section">
-          <img
-            className="back-btn"
+      <StyledEditPage>
+        <BackSection>
+          <BackIcon
             src={Back}
             width={21}
             alt="Back Button"
             onClick={() => navigate("/")}
           />
-        </div>
+        </BackSection>
         <form>
           <PhotoCard contact={editContact} setImageUrl={setEditContact} />
-          <div className="details-section">
+          <DetailsSection>
             <FullnameCard contact={editContact} setFullname={setEditContact} />
             <EmailCard contact={editContact} setEmail={setEditContact} />
             <NumbersCard contact={editContact} setNumbers={setEditContact} />
@@ -89,18 +98,16 @@ const EditPage = () => {
               contact={editContact}
               addNumberFields={setEditContact}
             />
-            {error ? <div className="error-message">{error}</div> : ""}
-            <div className="btns">
-              <button id="btn-cancel" onClick={() => navigate("/")}>
-                Cancel
-              </button>
-              <button id="btn-save" type="submit" onClick={handleSubmit}>
+            {error ? <Error className="error-message">{error}</Error> : ""}
+            <ButtonsDiv>
+              <CancelBtn onClick={() => navigate("/")}>Cancel</CancelBtn>
+              <SaveBtn type="submit" onClick={handleSubmit}>
                 Save
-              </button>
-            </div>
-          </div>
+              </SaveBtn>
+            </ButtonsDiv>
+          </DetailsSection>
         </form>
-      </section>
+      </StyledEditPage>
     </>
   );
 };
